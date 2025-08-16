@@ -1,34 +1,43 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
 
+  const [changeColor, setChangeColor] = useState("white")
+  const [textColor, setTextColor] = useState("black")
+
+const redButton = ()=>{
+  setChangeColor("red")
+  setTextColor("white")
+}
+
+const blueButton = ()=>{
+  setChangeColor("blue")
+  setTextColor("white")
+}
+const greenButton = ()=>{
+  setChangeColor("green")
+  setTextColor("white")
+}
+const resetButton = ()=>{
+  setChangeColor("white")
+  setTextColor()
+}
+    
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <div style={{ color: textColor, backgroundColor: changeColor}} className="container">
+        <h2 >Current Color is {changeColor}</h2>
+        <div className="btns">
+          <button  onClick={redButton}  >Red</button>
+          <button  onClick={blueButton} >Blue</button>
+          <button  onClick={greenButton} >Green</button>
+          <button  onClick={resetButton} >Reset</button>
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+      
+    </div>
   )
 }
 
